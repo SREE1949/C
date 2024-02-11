@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool sub(int a,int *A,int b,int *B)
+{
+        bool k=0;
+        for(int i=0;i<a;i++){
+                for(int j=0;j<b;j++){
+                        if(A[j+i]==B[j])
+                                k=1;
+                        else
+                                break;
+                }
+                if(k==1)
+                        break;
+        }
+        return k;
+}
+
+
+int main()
+{
+        int a,b;
+        bool k;
+        scanf("%d",&a);
+        int A[a];
+        for(int i=0;i<a;i++){
+                scanf("%d",&A[i]);
+        }
+        scanf("%d",&b);
+        int B[b];
+        for(int i=0;i<b;i++){
+                scanf("%d",&B[i]);
+        }
+
+        for(int i=0;i<b;i++){
+                printf("%d",B[i]);
+        }
+        k=sub(a,A,b,B);
+        printf("\n sub array :%d",k);
+
+        return 0;
+}
