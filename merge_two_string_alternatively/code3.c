@@ -3,29 +3,35 @@
 #include <stdlib.h>
 
 char * mergeAlternately(char * word1, char * word2){
-    char *ptr=malloc(strlen(word1)+strlen(word2));
-    int i=0;
-    int k=0;
+    
+    int i=strlen(word1);
+    int k=strlen(word2);
+    char *ptr=malloc(i+k);
+    int m=0;
+    int n=0;
+    int j=0;
 
     while(1) {
-        if(*(word1+i) != '\0'){
-            ptr[k]=*(word1+i);
-            k++;
-        }
-        if(*(word2+i) != '\0'){
-            ptr[k]=*(word2+i);
-            k++;
-        }
-        if(*(word1+i) == '\0' && *(word2+i)=='\0'){
-            break;
-        }
-        i++;
+            if(m<i){
+                    ptr[j]=*(word1+m);
+                    m++;
+                    j++;
+            }
+            if(n<k){
+                    ptr[j]=*(word2+n);
+                    n++;
+                    j++;
+            }
+            if(j==i+k){
+                    break;
+            }
     }
+
     return ptr;
 }
 
 int main(){
-        char *word1="abc";
+        char *word1="abcde";
         char *word2="xyz";
         char *ptr=mergeAlternately(word1,word2);
         printf("%s",ptr);
